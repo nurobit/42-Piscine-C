@@ -6,7 +6,7 @@
 #    By: viwade <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/06 16:05:46 by viwade            #+#    #+#              #
-#    Updated: 2018/08/06 23:58:40 by viwade           ###   ########.fr        #
+#    Updated: 2018/08/07 00:03:52 by viwade           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJECTS = $(addprefix ./includes/, $(FILES:.c=.o))
 all: $(NAME)
 
 clean:
-	rm -rf ./build/
+	rm -rf ./includes/
 
 fclean: clean
 	rm -f $(NAME)
@@ -30,10 +30,10 @@ fclean: clean
 re: fclean all
 
 build:
-	mkdir ./build/
+	mkdir ./includes/
 
 $(NAME): $(OBJECTS)
 	$(AR) rcs $@ $(OBJECTS)
 
-build/%.o : srcs/%.c | build
+build/%.o: srcs/%.c | build
 	$(CC) $(CFLAGS) -c %< -o $@
