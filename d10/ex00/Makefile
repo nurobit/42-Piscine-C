@@ -1,0 +1,39 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: viwade <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/08/06 16:05:46 by viwade            #+#    #+#              #
+#    Updated: 2018/08/06 22:51:34 by viwade           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = ./libft.a
+ARCHIVE = ar
+FILES = ft_putchar.c ft_putstr.c ft_strcmp.c ft_strlen.c ft_swap.c
+GCC = gcc
+CFLAGS ?= -Wall -Werror -Wextra
+CFLAGS += -I includes
+SOURCE = $(addprefix ./srcs/, $(FILES))
+OBJECTS = $(addprefix ./includes/, $(FILES:.c=.o))
+
+all: $(NAME)
+
+clean:
+	rm -rf ./build/
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+build:
+	mkdir ./build/
+
+$(NAME):
+	$(ARCHIVE) rcs $@ $(OBJECTS)
+
+build/%.o : srcs/%.c | build
+	$(CC) -c %< -o $@
