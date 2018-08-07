@@ -6,7 +6,7 @@
 #    By: viwade <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/06 16:05:46 by viwade            #+#    #+#              #
-#    Updated: 2018/08/07 00:03:52 by viwade           ###   ########.fr        #
+#    Updated: 2018/08/07 00:04:23 by viwade           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,5 +35,5 @@ build:
 $(NAME): $(OBJECTS)
 	$(AR) rcs $@ $(OBJECTS)
 
-build/%.o: srcs/%.c | build
+includes/%.o: srcs/%.c | build
 	$(CC) $(CFLAGS) -c %< -o $@
