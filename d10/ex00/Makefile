@@ -6,7 +6,7 @@
 #    By: viwade <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/06 16:05:46 by viwade            #+#    #+#              #
-#    Updated: 2018/08/07 00:15:59 by viwade           ###   ########.fr        #
+#    Updated: 2018/08/07 00:24:21 by viwade           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,9 @@ build:
 
 $(NAME): $(OBJECTS)
 	$(AR) rcs $@ $(OBJECTS)
+
+includes/ft_putchar.o: srcs/ft_putchar.c
+	gcc $(CFLAGS) -c %< -o $@
 
 includes/%.o: srcs/%.c | build
 	$(CC) $(CFLAGS) -c %< -o $@
